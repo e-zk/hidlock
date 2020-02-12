@@ -12,18 +12,18 @@ These scripts aim to protect users somewhat from HID attacks by immediately lock
 ## installation
 1. Enable hotplugd(8). As root, type:
 
-	rcctl enable hotplugd
+		rcctl enable hotplugd
 
 2. Copy the `attach` and `detach` scripts included in this repo to `/etc/hotplugd/` (create the directory if it does not exist).
 
 3. For xlock(1) to work properly, it has to be called by the user of the X display; to do this doas(1) can be used, provided the following rule is included in `/etc/doas.conf`:
 
-	# Note: this allows the root user to execute any command as any user without password confirmation
-	permit nopass keepenv root
+		# Note: this allows the root user to execute any command as any user without password confirmation
+		permit nopass keepenv root
 
 4. Finally, start hotplugd(8):
 
-	rcctl start hotplugd
+		rcctl start hotplugd
 
 ## todo / roadmap
 * Makefile/install script for easier installation 
