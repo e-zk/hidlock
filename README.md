@@ -10,13 +10,21 @@ Human Interface Devices (HIDs) are input devices that allow humans to interface 
 These scripts aim to protect users somewhat from HID attacks by immediately locking running X displays when a HID is attached; this means that whatever keystrokes a malicious actor wants to execute are hooked into xlock(1)'s password input instead of anywhere near running programs.
 
 ## installation
-First, enable hotplugd(8). As root, type:
+1. Enable hotplugd(8). As root, type:
 
 	rcctl enable hotplugd
 
-Then copy the `attach` and `detach` scripts included in this repo to `/etc/hotplugd/` (create the directory if it does not exist).
+2. Copy the `attach` and `detach` scripts included in this repo to `/etc/hotplugd/` (create the directory if it does not exist).
 
-Finally, start hotplugd(8):
+3. For xlock(1) to work properly, it has to be called by the user of the X display; to do this doas(1) can be used, provided the following rule is included in `/etc/doas.conf`:
+
+	# Note: this allows the root user to execute any command as any user without password confirmation
+	permit nopass keepenv root
+
+4. Finally, start hotplugd(8):
 
 	rcctl start hotplugd
 
+## todo / roadmap
+* Makefile/install script for easier installation 
+* Support for other lock programs 
