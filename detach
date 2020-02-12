@@ -1,0 +1,7 @@
+#!/bin/sh
+
+DEVCLASS=$1
+DEVNAME=$2
+
+# log
+logger -t hotplug "$DEVNAME attached (device class: $DEVCLASS)"

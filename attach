@@ -1,0 +1,29 @@
+#!/bin/sh
+
+DEVCLASS=$1
+DEVNAME=$2
+
+lock_x() {
+	# for each open display...
+	for dispath in /tmp/.X11-unix/*; do
+		# get the display number
+		disp=$(basename $dispath | sed 's/X//g')
+
+		# get the running user
+		xuser=$(who | grep "(:${disp})" | awk '{print $1}' | head -n 1)
+
+		# log to syslog
+		logger -t hotplug "locking X display for $xuser"
+
+		# run xlock(1) to lock the screen
+		export DISPLAY=:${disp}
+		doas -u $xuser xlock -info "[ X LOCKED AFTER HID DEVICE ATTACHED ]" -bg darkred &
+	done
+}
+
+# log
+logger -t hotplug "$DEVNAME attached (device class: $DEVCLASS)"
+
+case "$DEVNAME" in
+	uhid*)	lock_x ;;
+esac
