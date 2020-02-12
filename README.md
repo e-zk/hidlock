@@ -5,13 +5,13 @@ Scripts for OpenBSD's [hotplugd(8)](https://man.openbsd.org/hotplugd "hotplugd m
 --
 
 ## installation
-1. Enable hotplugd(8):
+First, enable hotplugd(8). As root, type:
 
-		rcctl enable hotplugd
+	rcctl enable hotplugd
 
-2. Clone this repo.
-3. As root, copy the `attach` and `detach` scripts to `/etc/hotplugd/` (create the directory if it does not exist).
-4. Enable hotplugd(8):
+Then copy the `attach` and `detach` scripts included in this repo to `/etc/hotplugd/` (create the directory if it does not exist).
 
-		rcctl start hotplugd
+Finally, start hotplugd(8):
+
+	rcctl start hotplugd
 
