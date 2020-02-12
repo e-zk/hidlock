@@ -16,11 +16,11 @@ These scripts aim to protect users somewhat from HID attacks by immediately lock
 
 2. Copy the `attach` and `detach` scripts included in this repo to `/etc/hotplug/` (create the directory if it does not exist):
 
-	mkdir -p /etc/hotplug
-	cp -iv attach detach /etc/hotplug
-
-	# make sure the scripts are executable:
-	chmod +x /etc/hotplug/*
+		mkdir -p /etc/hotplug
+		cp -iv attach detach /etc/hotplug
+		
+		# make sure the scripts are executable:
+		chmod +x /etc/hotplug/*
 
 3. For xlock(1) to work properly, it has to be called by the user of the X display; to do this doas(1) can be used, provided the following rule is included in `/etc/doas.conf`:
 
