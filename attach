@@ -17,7 +17,7 @@ lock_x() {
 
 		# run xlock(1) to lock the screen
 		export DISPLAY=:${disp}
-		doas -u $xuser xlock -info "[ X LOCKED AFTER HID DEVICE ATTACHED ]" -bg darkred &
+		doas -u $xuser xlock +description -info "X DISPLAY LOCKED AFTER HID DEVICE ATTACHED" -bg darkred &
 	done
 }
 
