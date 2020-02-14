@@ -1,8 +1,11 @@
 # hidlock
 `attach` and `detach` scripts for OpenBSD's [hotplugd(8)](https://man.openbsd.org/hotplugd) that lock all running X displays when a USB [HID](https://en.wikipedia.org/wiki/Human_interface_device) is attached.
 
+![xlock running after HID attack detected](preview.png)
+_Note: xlock formatting may vary accross systems_
+
 ## about
-Human Interface Devices (HIDs) are input devices that allow humans to interface with computers. The most common HID used are keyboards and mice. A HID attack involves a malicious actor connecting a USB device into a target computer, and this USB device registering itself as a keyboard to the kernel, then playing back preconfigured keyboard keypresses in order to expose backdoors, change settings, and/or install programs. There are many platforms used for HID attacks, here are some of the more common ones:
+Human Interface Devices (HIDs) are input devices that allow humans to interface with computers. The most common HID used are keyboards and mice. A HID attack involves a malicious actor connecting a USB device into a target computer, and this USB device registering itself as a keyboard to the kernel, then playing back preconfigured keyboard keypresses in order to expose backdoors, change settings, and/or install programs - whatever a hacker can do with his hands on your keyboard, a malicious HID can (within reason). There are many platforms used for HID attacks, here are some of the more common ones:
 
 * [USB RubberDucky (hak5)](https://shop.hak5.org/products/usb-rubber-ducky-deluxe)
 * [Teensy](https://www.pjrc.com/) boards are also [commonly](https://www.cyberpointllc.com/posts/cp-human-interface-device-attack.html) [used](https://www.irongeek.com/i.php?page=security/programmable-hid-usb-keystroke-dongle)
